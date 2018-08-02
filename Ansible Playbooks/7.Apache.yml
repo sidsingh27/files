@@ -1,0 +1,25 @@
+---# Install http server and Deploy the Html File
+-  hosts: centos
+   remote_user: ansible
+   become: yes
+   tasks: 
+      - name: Install Apache Server
+        yum:
+            name: httpd
+            state: present
+        notify:
+        - startservice
+      - name: create a file if does not exist
+        file:
+            state: touch
+            path: /var/www/html/index.html
+      - name: Adding line 
+        lineinfile:
+             state: present
+             path: /var/www/html/index.html
+             line: Hostname= {{ansible_hostname}}
+   handlers:
+    - name: startservice
+      service:
+         name: httpd
+         state: restarted

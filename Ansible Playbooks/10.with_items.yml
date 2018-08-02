@@ -1,0 +1,28 @@
+--- # Multiple Itmes
+-  hosts: centos
+   become: yes
+   tasks: 
+   - name: Multiple Items - {{ item }}
+     file:
+            state: touch
+            path: /home/ansible/{{ item }}
+     with_items:
+     - file_no_1
+     - file_no_2
+     - file_no_3
+   - name: "Install Common Libraries from CentOS mirror"
+     yum: state=present name={{ item }}
+     with_items:
+      - sudo
+      - vim
+      - gcc
+      - gcc-c++
+      - autoconf
+      - automake
+      - libxml2-devel
+      - unzip
+      - createrepo
+      - htop
+      - iotop
+      - wget
+      - tar

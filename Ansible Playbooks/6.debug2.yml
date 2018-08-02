@@ -1,0 +1,16 @@
+--- # Debugging
+-   hosts: '{{ myHosts }}'
+    remote_user: ansible
+    become: yes
+    become_method: sudo
+    connection: ssh
+    gather_facts: '{{ gather }}'
+    vars:
+        myHosts: centos
+        gather: yes
+        pkg: telnet
+    tasks:
+    - shell: cat /etc/ansible/hosts
+      register: hello
+    - debug: msg="Hello File is empty"  
+      when: hello.stdout == ""

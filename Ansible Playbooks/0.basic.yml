@@ -1,0 +1,8 @@
+--- #
+- hosts: centos
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Querying for Telnet Install
+    yum: pkg=telnet state=present update_cache=true

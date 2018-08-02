@@ -1,0 +1,13 @@
+--- # Conditional Based PlayBook
+-  hosts: centos
+   remote_user: ansible
+   become: yes
+   become_method: sudo
+   connection: ssh
+   gather_facts: yes
+   tasks: 
+   - name: If Os is RedHat install Http
+     yum:
+         name: httpd
+         state: present
+     when: ansible_os_family == 'RedHat'

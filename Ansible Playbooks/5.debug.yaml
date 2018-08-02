@@ -1,0 +1,18 @@
+--- # Debugging
+-   hosts: '{{ myHosts }}'
+    remote_user: ansible
+    become: yes
+    become_method: sudo
+    connection: ssh
+    gather_facts: '{{ gather }}'
+    vars:
+        myHosts: centos
+        gather: yes
+        pkg: telnet
+    tasks:
+    - name: Install telnet server on centos
+      yum:
+        name: '{{ pkg }}'
+        state: latest
+      register: result
+    - debug: var=result
