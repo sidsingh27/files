@@ -1,0 +1,10 @@
+---
+# This playbook deploys a simple Tomcat 7 server.
+
+- hosts: centos
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+
+  roles:
+    - tomcat

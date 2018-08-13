@@ -1,0 +1,3 @@
+- name: Install Apache server
+  yum: name=httpd state=latest
+  notify: Restart httpd
