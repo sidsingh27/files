@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+HOST_IP = '192.168.56.65'
+HOST2_IP = '192.168.56.66'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+config.vm.define "ansible-01" do |ansible1|
+ansible1.vm.hostname = "ansible1.rnstech.com"
+ansible1.vm.box = "bento/centos-7.2"
+ansible1.vm.box_url = "bento/centos-7.2"
+ansible1.vm.network :private_network,
+      ip: HOST_IP,
+      netmask: '255.255.255.0'
+ansible1.vm.network :forwarded_port, guest: 80, host: 8081
+#ansible1.vm.synced_folder 'html', '/var/www/html'
+#ansible1.vm.provision 'shell', path: 'provision.sh'	
+end
+
+config.vm.define "ansible-02" do |ansible2|
+ansible2.vm.hostname = "ansible2.rnstech.com"
+ansible2.vm.box = "bento/centos-7.2"
+ansible2.vm.box_url = "bento/centos-7.2"
+ansible2.vm.network :private_network,
+      ip: HOST2_IP,
+      netmask: '255.255.255.0'
+end
+end
