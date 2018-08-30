@@ -1,4 +1,7 @@
-The required/optional Cygwin packages: pip, boto, cron
+$ export AWS_ACCESS_KEY_ID='YOUR_AWS_API_KEY' 
+$ export AWS_SECRET_ACCESS_KEY='YOUR_AWS_API_SECRET_KEY'
+
+The required/optional Cygwin packages: pip, boto, troposphere
 		
 Start Instance:
 		> python instance.py -i i-05c4b90c6caddd015 -o start
