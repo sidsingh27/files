@@ -6,10 +6,6 @@ Start Instance:
 Stop Instance:
 		> python instance.py -i i-05c4b90c6caddd015 -o stop
 		
-		> crontab -e
-			0 1 * * *  /usr/bin/python /cygdrive/d/workspace/awsexerise/Start_Stop/instance.py -i i-k172af8d -o start 
-			0 2 * * * /usr/bin/python /cygdrive/d/workspace/awsexerise/Start_Stop/instance.py -i i-k172af8d -o stop
-
 Detecting Stopped Production Instances:
 		> python detecting_stopped_production_instances.py
 		
