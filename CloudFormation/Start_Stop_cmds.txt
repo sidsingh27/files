@@ -1,0 +1,25 @@
+The required/optional Cygwin packages: pip, boto, cron
+		
+Start Instance:
+		> python instance.py -i i-05c4b90c6caddd015 -o start
+		
+Stop Instance:
+		> python instance.py -i i-05c4b90c6caddd015 -o stop
+		
+		> crontab -e
+			0 1 * * *  /usr/bin/python /cygdrive/d/workspace/awsexerise/Start_Stop/instance.py -i i-k172af8d -o start 
+			0 2 * * * /usr/bin/python /cygdrive/d/workspace/awsexerise/Start_Stop/instance.py -i i-k172af8d -o stop
+
+Detecting Stopped Production Instances:
+		> python detecting_stopped_production_instances.py
+		
+		> crontab -e
+			*/30 * * * *  /detecting_stopped_production_instances.py
+		
+CREATING AN EC2 INSTANCE AND ATTACHING AMAZON EBS VOLUME TO THE INSTANCE USING PYTHON BOTO
+With out user Data
+		>  python 0.create_instance.py
+		
+With User data:
+		> python 0.create_instance_with_userdata.py
+

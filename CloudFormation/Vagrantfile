@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+HOST_IP = "192.168.10.40"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+config.vm.define "awsClient" do |awsClient|
+awsClient.vm.hostname = "awsClient.rnstech.com"
+awsClient.vm.box = "bento/centos-7.2"
+awsClient.vm.box_url = "bento/centos-7.2"
+awsClient.vm.network :forwarded_port, guest: 8080, host: 8080 
+	awsClient.vm.provider :virtualbox do  |vb|
+		vb.customize [ 'modifyvm', :id,  '--memory', '2048' ]
+		vb.customize [ 'modifyvm', :id,  '--cpus',  '4' ]
+	end
+end
+end
